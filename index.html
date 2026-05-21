@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOOTBALL SHOP | Boutique Officielle</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+
+</head>
+
+<body>
+    <!-- Transparent Navbar -->
+    <nav class="navbar">
+        <h1 class="logo">FOOTBALL<span>SHOP</span></h1>
+
+        <div class="nav-links">
+            <a href="#" class="nav-link" data-i18n="nav_home">Accueil</a>
+            <a href="#shop" class="nav-link" data-i18n="nav_shop">Boutique</a>
+            <a href="#contact" class="nav-link" data-i18n="nav_contact">Contact</a>
+        </div>
+
+        <div class="lang-switcher">
+            <button id="lang-fr" class="lang-btn active">FR</button>
+            <button id="lang-ar" class="lang-btn">عربي</button>
+        </div>
+    </nav>
+
+    <!-- Hero Showcase (Full Screen) -->
+    <div class="hero-showcase">
+        <div class="hero-image-container">
+            <img src="IMGE/usma%201.jpeg" alt="USMA T-Shirt 1" class="hero-img" loading="eager" decoding="async">
+        </div>
+        <div class="hero-image-container">
+            <img src="IMGE/USMA2.jpeg" alt="USMA T-Shirt 2" class="hero-img" loading="eager" decoding="async">
+        </div>
+    </div>
+
+    <div class="app-container">
+        <main class="main-content">
+            <!-- Product Section -->
+            <section class="product-showcase" id="shop">
+                <div class="product-gallery">
+                    <div class="image-wrapper">
+                        <img src="IMGE/USMAAVANT.jpeg" alt="T-Shirt USMA Avant" id="product-image" class="product-image active">
+                    </div>
+                    <div class="gallery-controls">
+                        <button class="view-btn active" data-view="front" data-i18n="front">Face</button>
+                        <button class="view-btn" data-view="back" data-i18n="back">Dos</button>
+                    </div>
+                </div>
+                <div class="product-details">
+                    <h2 class="product-title" data-i18n="title">T-Shirt POLO USMA 2026</h2>
+                    <p class="product-price" data-i18n="price">3000 DA</p>
+                    <p class="product-description" data-i18n="description">
+                        T-shirt USMA haute finition et de bonne qualité. Bienvenue chez USMA Store DZ !
+                    </p>
+                </div>
+            </section>
+
+            <!-- Order Form Section -->
+            <section class="order-section">
+                <div class="form-container">
+                    <h3 data-i18n="form_title">Finaliser la commande</h3>
+                    <form id="order-form" class="order-form" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="d71149b0-647a-4df7-ba0b-11b4cc1b7ce8">
+                        <input type="hidden" name="subject" value="Nouvelle Commande - T-Shirt USMA">
+                        <input type="hidden" name="from_name" value="USMA Store DZ">
+                        <div class="form-group">
+                            <label for="fullName" data-i18n="fullname">Nom Complet</label>
+                            <input type="text" id="fullName" name="fullName" placeholder="Ex: Mohamed Ali" required
+                                data-i18n-placeholder="fullname_placeholder">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone" data-i18n="phone">Numéro de Téléphone</label>
+                            <input type="tel" id="phone" name="phone" placeholder="0555 00 00 00" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="wilaya" data-i18n="wilaya">Wilaya</label>
+                                <select id="wilaya" name="wilaya" required>
+                                    <option value="" disabled selected data-i18n="wilaya_placeholder">Choisir une wilaya
+                                    </option>
+                                    <option value="01">01 - Adrar</option>
+                                    <option value="02">02 - Chlef</option>
+                                    <option value="03">03 - Laghouat</option>
+                                    <option value="04">04 - Oum El Bouaghi</option>
+                                    <option value="05">05 - Batna</option>
+                                    <option value="06">06 - Béjaïa</option>
+                                    <option value="07">07 - Biskra</option>
+                                    <option value="08">08 - Béchar</option>
+                                    <option value="09">09 - Blida</option>
+                                    <option value="10">10 - Bouira</option>
+                                    <option value="11">11 - Tamanrasset</option>
+                                    <option value="12">12 - Tébessa</option>
+                                    <option value="13">13 - Tlemcen</option>
+                                    <option value="14">14 - Tiaret</option>
+                                    <option value="15">15 - Tizi Ouzou</option>
+                                    <option value="16">16 - Alger</option>
+                                    <option value="17">17 - Djelfa</option>
+                                    <option value="18">18 - Jijel</option>
+                                    <option value="19">19 - Sétif</option>
+                                    <option value="20">20 - Saïda</option>
+                                    <option value="21">21 - Skikda</option>
+                                    <option value="22">22 - Sidi Bel Abbès</option>
+                                    <option value="23">23 - Annaba</option>
+                                    <option value="24">24 - Guelma</option>
+                                    <option value="25">25 - Constantine</option>
+                                    <option value="26">26 - Médéa</option>
+                                    <option value="27">27 - Mostaganem</option>
+                                    <option value="28">28 - M'Sila</option>
+                                    <option value="29">29 - Mascara</option>
+                                    <option value="30">30 - Ouargla</option>
+                                    <option value="31">31 - Oran</option>
+                                    <option value="32">32 - El Bayadh</option>
+                                    <option value="33">33 - Illizi</option>
+                                    <option value="34">34 - Bordj Bou Arréridj</option>
+                                    <option value="35">35 - Boumerdès</option>
+                                    <option value="36">36 - El Tarf</option>
+                                    <option value="37">37 - Tindouf</option>
+                                    <option value="38">38 - Tissemsilt</option>
+                                    <option value="39">39 - El Oued</option>
+                                    <option value="40">40 - Khenchela</option>
+                                    <option value="41">41 - Souk Ahras</option>
+                                    <option value="42">42 - Tipaza</option>
+                                    <option value="43">43 - Mila</option>
+                                    <option value="44">44 - Aïn Defla</option>
+                                    <option value="45">45 - Naâma</option>
+                                    <option value="46">46 - Aïn Témouchent</option>
+                                    <option value="47">47 - Ghardaïa</option>
+                                    <option value="48">48 - Relizane</option>
+                                    <option value="49">49 - El M'Ghair</option>
+                                    <option value="50">50 - El Meniaa</option>
+                                    <option value="51">51 - Ouled Djellal</option>
+                                    <option value="52">52 - Bordj Baji Mokhtar</option>
+                                    <option value="53">53 - Beni Abbes</option>
+                                    <option value="54">54 - Timimoun</option>
+                                    <option value="55">55 - Touggourt</option>
+                                    <option value="56">56 - Djanet</option>
+                                    <option value="57">57 - In Salah</option>
+                                    <option value="58">58 - In Guezzam</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="commune" data-i18n="commune">Commune</label>
+                                <input type="text" id="commune" name="commune" list="communes-list"
+                                    placeholder="Choisir ou saisir une commune" required disabled
+                                    data-i18n-placeholder="commune_placeholder" autocomplete="off">
+                                <datalist id="communes-list"></datalist>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label data-i18n="select_sizes">Choisir les tailles et quantités</label>
+                            <div class="size-selector-grid">
+                                <div class="size-item">
+                                    <span>S</span>
+                                    <div class="qty-control">
+                                        <button type="button" class="qty-btn minus">-</button>
+                                        <input type="number" name="qty_S" value="0" min="0" class="size-qty" readonly>
+                                        <button type="button" class="qty-btn plus">+</button>
+                                    </div>
+                                </div>
+                                <div class="size-item">
+                                    <span>M</span>
+                                    <div class="qty-control">
+                                        <button type="button" class="qty-btn minus">-</button>
+                                        <input type="number" name="qty_M" value="0" min="0" class="size-qty" readonly>
+                                        <button type="button" class="qty-btn plus">+</button>
+                                    </div>
+                                </div>
+                                <div class="size-item">
+                                    <span>L</span>
+                                    <div class="qty-control">
+                                        <button type="button" class="qty-btn minus">-</button>
+                                        <input type="number" name="qty_L" value="0" min="0" class="size-qty" readonly>
+                                        <button type="button" class="qty-btn plus">+</button>
+                                    </div>
+                                </div>
+                                <div class="size-item">
+                                    <span>XL</span>
+                                    <div class="qty-control">
+                                        <button type="button" class="qty-btn minus">-</button>
+                                        <input type="number" name="qty_XL" value="0" min="0" class="size-qty" readonly>
+                                        <button type="button" class="qty-btn plus">+</button>
+                                    </div>
+                                </div>
+                                <div class="size-item">
+                                    <span>XXL</span>
+                                    <div class="qty-control">
+                                        <button type="button" class="qty-btn minus">-</button>
+                                        <input type="number" name="qty_XXL" value="0" min="0" class="size-qty" readonly>
+                                        <button type="button" class="qty-btn plus">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label data-i18n="delivery_method">Mode de Livraison</label>
+                            <div class="delivery-options">
+                                <label class="delivery-option">
+                                    <input type="radio" name="deliveryMethod" value="domicile" checked>
+                                    <span class="radio-custom"></span>
+                                    <span data-i18n="home_delivery">À Domicile</span>
+                                </label>
+                                <label class="delivery-option">
+                                    <input type="radio" name="deliveryMethod" value="bureau">
+                                    <span class="radio-custom"></span>
+                                    <span data-i18n="office_delivery">Bureau (Stop Desk)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="price-summary">
+                            <div class="summary-line">
+                                <span data-i18n="shipping_cost">Frais de livraison:</span>
+                                <span id="shipping-display">0 DA</span>
+                            </div>
+                            <div class="summary-line total">
+                                <span data-i18n="total_amount">Total à payer:</span>
+                                <span id="total-display">0 DA</span>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            <span data-i18n="submit">Commander Maintenant</span>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Contact Section -->
+    <footer class="contact-section" id="contact">
+        <div class="contact-container">
+            <h3 data-i18n="contact_title">Contactez-nous</h3>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <p data-i18n="contact_address">DOUERA / BABA HASSEN, Alger</p>
+                </div>
+                <div class="contact-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                    <a href="https://www.instagram.com/football_shopusma?igsh=MWtjaXZveHA2bzNkMg==" target="_blank"
+                        rel="noopener noreferrer" class="contact-link" dir="ltr">@football_shopusma</a>
+                </div>
+                <div class="contact-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <a href="mailto:islammohfootballshop@gmail.com" class="contact-link"
+                        dir="ltr">islammohfootballshop@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="success-modal">
+        <div class="modal-content">
+            <div class="success-icon">✓</div>
+            <h2 data-i18n="success_title">Commande Réussie !</h2>
+            <p data-i18n="success_desc">Merci pour votre achat. Notre équipe vous contactera bientôt pour la livraison.
+            </p>
+            <button class="close-btn" id="close-modal" data-i18n="close">Fermer</button>
+        </div>
+    </div>
+
+    <!-- Bouton Commander fixe (flèche, côté droit) -->
+    <a href="#order-form" class="order-fab" aria-label="Commander">
+        <span class="order-fab-text" data-i18n="order_now">Commander</span>
+        <svg class="order-fab-arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+    </a>
+
+    <script src="communes-data.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
