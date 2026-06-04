@@ -692,6 +692,13 @@ select option {
     border-color: rgba(255, 255, 255, 0.2);
 }
 
+.delivery-option.disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    pointer-events: none;
+    background: rgba(255, 255, 255, 0.02);
+}
+
 .delivery-option input {
     display: none;
 }

@@ -193,10 +193,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     wilayaSelect.addEventListener('change', () => {
         populateCommunes(wilayaSelect.value);
+        checkDeliveryMethodAvailability();
         updatePrice();
     });
 
     resetCommuneField();
+    checkDeliveryMethodAvailability();
 
     // Shipping Calculation Logic
     const deliveryMethods = document.querySelectorAll('input[name="deliveryMethod"]');
@@ -228,65 +230,88 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const shippingRates = {
         'default': { domicile: 700, bureau: 400 },
-        '01': { domicile: 1100, bureau: 850 }, // Adrar
-        '02': { domicile: 700, bureau: 400 }, // Chlef
-        '03': { domicile: 800, bureau: 450 }, // Laghouat
-        '04': { domicile: 700, bureau: 450 }, // Oum El Bouaghi
-        '05': { domicile: 700, bureau: 400 }, // Batna
-        '06': { domicile: 700, bureau: 400 }, // Bejaia
-        '07': { domicile: 700, bureau: 450 }, // Biskra
-        '08': { domicile: 1000, bureau: 750 }, // Bechar
-        '09': { domicile: 500, bureau: 300 }, // Blida
-        '10': { domicile: 700, bureau: 400 }, // Bouira
-        '11': { domicile: 1100, bureau: 900 }, // Tamanrasset
-        '12': { domicile: 800, bureau: 450 }, // Tebessa
-        '13': { domicile: 700, bureau: 450 }, // Tlemcen
-        '14': { domicile: 700, bureau: 400 }, // Tiaret
-        '15': { domicile: 700, bureau: 400 }, // Tizi Ouzou
-        '16': { domicile: 400, bureau: 250 }, // Alger
-        '17': { domicile: 750, bureau: 450 }, // Djelfa
-        '18': { domicile: 700, bureau: 400 }, // Jijel
-        '19': { domicile: 700, bureau: 400 }, // Setif
-        '20': { domicile: 700, bureau: 550 }, // Saida
-        '21': { domicile: 700, bureau: 400 }, // Skikda
-        '22': { domicile: 700, bureau: 400 }, // Sidi Bel Abbes
-        '23': { domicile: 700, bureau: 450 }, // Annaba
-        '24': { domicile: 700, bureau: 500 }, // Guelma
-        '25': { domicile: 700, bureau: 400 }, // Constantine
-        '26': { domicile: 600, bureau: 300 }, // Medea
-        '27': { domicile: 700, bureau: 400 }, // Mostaganem
-        '28': { domicile: 700, bureau: 500 }, // M'Sila
-        '29': { domicile: 700, bureau: 450 }, // Mascara
-        '30': { domicile: 800, bureau: 500 }, // Ouargla
-        '31': { domicile: 700, bureau: 400 }, // Oran
-        '32': { domicile: 800, bureau: 500 }, // El Bayadh
-        '33': { domicile: 1300, bureau: 1100 }, // Illizi
-        '34': { domicile: 700, bureau: 400 }, // Bordj Bou Arreridj
-        '35': { domicile: 600, bureau: 300 }, // Boumerdes
-        '36': { domicile: 700, bureau: 450 }, // El Tarf
-        '37': { domicile: 1500, bureau: 850 }, // Tindouf
-        '38': { domicile: 700, bureau: 400 }, // Tissemsilt
-        '39': { domicile: 700, bureau: 550 }, // El Oued
-        '40': { domicile: 700, bureau: 450 }, // Khenchela
-        '41': { domicile: 700, bureau: 400 }, // Souk Ahras
+        '01': { domicile: 1500, bureau: 1000 }, // Adrar
+        '02': { domicile: 800, bureau: 500 }, // Chlef
+        '03': { domicile: 1000, bureau: 600 }, // Laghouat
+        '04': { domicile: 800, bureau: 500 }, // Oum El Bouaghi
+        '05': { domicile: 800, bureau: 500 }, // Batna
+        '06': { domicile: 800, bureau: 500 }, // Béjaïa
+        '07': { domicile: 1000, bureau: 600 }, // Biskra
+        '08': { domicile: 1200, bureau: 800 }, // Béchar
+        '09': { domicile: 600, bureau: 400 }, // Blida
+        '10': { domicile: 700, bureau: 450 }, // Bouira
+        '11': { domicile: 2000, bureau: 1500 }, // Tamanrasset
+        '12': { domicile: 900, bureau: 600 }, // Tébessa
+        '13': { domicile: 800, bureau: 500 }, // Tlemcen
+        '14': { domicile: 900, bureau: 600 }, // Tiaret
+        '15': { domicile: 700, bureau: 450 }, // Tizi Ouzou
+        '16': { domicile: 500, bureau: 300 }, // Alger
+        '17': { domicile: 1000, bureau: 600 }, // Djelfa
+        '18': { domicile: 800, bureau: 500 }, // Jijel
+        '19': { domicile: 800, bureau: 500 }, // Sétif
+        '20': { domicile: 900, bureau: 600 }, // Saïda
+        '21': { domicile: 800, bureau: 500 }, // Skikda
+        '22': { domicile: 800, bureau: 500 }, // Sidi Bel Abbès
+        '23': { domicile: 800, bureau: 500 }, // Annaba
+        '24': { domicile: 900, bureau: 600 }, // Guelma
+        '25': { domicile: 800, bureau: 500 }, // Constantine
+        '26': { domicile: 700, bureau: 450 }, // Médéa
+        '27': { domicile: 800, bureau: 500 }, // Mostaganem
+        '28': { domicile: 800, bureau: 500 }, // M'Sila
+        '29': { domicile: 800, bureau: 500 }, // Mascara
+        '30': { domicile: 1100, bureau: 700 }, // Ouargla
+        '31': { domicile: 800, bureau: 500 }, // Oran
+        '32': { domicile: 1200, bureau: 800 }, // El Bayadh
+        '33': { domicile: 1900, bureau: 1500 }, // Illizi
+        '34': { domicile: 800, bureau: 500 }, // Bordj Bou Arréridj
+        '35': { domicile: 600, bureau: 400 }, // Boumerdès
+        '36': { domicile: 900, bureau: 600 }, // El Tarf
+        '37': { domicile: 1700, bureau: 1000 }, // Tindouf
+        '38': { domicile: 800, bureau: 500 }, // Tissemsilt
+        '39': { domicile: 1100, bureau: 700 }, // El Oued
+        '40': { domicile: 900, bureau: 600 }, // Khenchela
+        '41': { domicile: 900, bureau: 600 }, // Souk Ahras
         '42': { domicile: 600, bureau: 400 }, // Tipaza
-        '43': { domicile: 700, bureau: 400 }, // Mila
-        '44': { domicile: 700, bureau: 400 }, // Ain Defla
-        '45': { domicile: 800, bureau: 450 }, // Naama
-        '46': { domicile: 700, bureau: 450 }, // Ain Temouchent
-        '47': { domicile: 800, bureau: 450 }, // Ghardaia
-        '48': { domicile: 700, bureau: 400 }, // Relizane
-        '49': { domicile: 800, bureau: 600 }, // El M'Ghair
-        '50': { domicile: 1000, bureau: 700 }, // El Meniaa
-        '51': { domicile: 800, bureau: 600 }, // Ouled Djellal
+        '43': { domicile: 800, bureau: 500 }, // Mila
+        '44': { domicile: 800, bureau: 500 }, // Aïn Defla
+        '45': { domicile: 1200, bureau: 800 }, // Naâma
+        '46': { domicile: 800, bureau: 500 }, // Aïn Témouchent
+        '47': { domicile: 1100, bureau: 700 }, // Ghardaïa
+        '48': { domicile: 800, bureau: 500 }, // Relizane
+        '49': { domicile: 1100, bureau: null }, // El M'Ghair
+        '50': { domicile: 1100, bureau: 800 }, // El Meniaa
+        '51': { domicile: 1000, bureau: 600 }, // Ouled Djellal
         '52': { domicile: 2000, bureau: 1500 }, // Bordj Baji Mokhtar
         '53': { domicile: 1200, bureau: 800 }, // Beni Abbes
-        '54': { domicile: 1000, bureau: 750 }, // Timimoun
-        '55': { domicile: 800, bureau: 550 }, // Touggourt
+        '54': { domicile: 1500, bureau: 1000 }, // Timimoun
+        '55': { domicile: 1100, bureau: 700 }, // Touggourt
         '56': { domicile: 2000, bureau: 1500 }, // Djanet
-        '57': { domicile: 1000, bureau: 1000 }, // In Salah
+        '57': { domicile: 1800, bureau: 1200 }, // In Salah
         '58': { domicile: 2000, bureau: 1500 }, // In Guezzam
     };
+
+    function checkDeliveryMethodAvailability() {
+        const wilaya = wilayaSelect.value;
+        const bureauRadio = document.querySelector('input[name="deliveryMethod"][value="bureau"]');
+        const domicileRadio = document.querySelector('input[name="deliveryMethod"][value="domicile"]');
+        
+        if (wilaya && shippingRates[wilaya]) {
+            const rates = shippingRates[wilaya];
+            if (rates.bureau === null) {
+                bureauRadio.disabled = true;
+                bureauRadio.parentElement.classList.add('disabled');
+                if (bureauRadio.checked) {
+                    domicileRadio.checked = true;
+                }
+            } else {
+                bureauRadio.disabled = false;
+                bureauRadio.parentElement.classList.remove('disabled');
+            }
+        } else {
+            bureauRadio.disabled = false;
+            bureauRadio.parentElement.classList.remove('disabled');
+        }
+    }
 
     function updatePrice() {
         const wilaya = wilayaSelect.value;
@@ -298,15 +323,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         let shipping = 0;
+        let isAvailable = true;
         if (wilaya && totalQty > 0) {
             const rates = shippingRates[wilaya] || shippingRates['default'];
             shipping = rates[method];
+            if (shipping === null) {
+                isAvailable = false;
+            }
         }
 
-        const total = (basePrice * totalQty) + shipping;
+        const total = (basePrice * totalQty) + (isAvailable ? shipping : 0);
         
-        shippingDisplay.textContent = `${shipping} DA`;
-        totalDisplay.textContent = `${total} DA`;
+        if (!isAvailable) {
+            shippingDisplay.textContent = currentLang === 'ar' ? 'غير متوفر' : 'Non disponible';
+            totalDisplay.textContent = `${basePrice * totalQty} DA`;
+        } else {
+            shippingDisplay.textContent = `${shipping} DA`;
+            totalDisplay.textContent = `${total} DA`;
+        }
     }
 
     deliveryMethods.forEach(radio => radio.addEventListener('change', updatePrice));
