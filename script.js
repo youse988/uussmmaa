@@ -362,6 +362,13 @@ document.addEventListener('DOMContentLoaded', () => {
             alert(currentLang === 'fr' ? 'Veuillez choisir au moins une taille.' : 'يرجى اختيار مقاس واحد على الأقل.');
             return;
         }
+
+        // Calculate total order value for tracking/analytics
+        const wilaya = wilayaSelect.value;
+        const method = document.querySelector('input[name="deliveryMethod"]:checked').value;
+        const rates = shippingRates[wilaya] || shippingRates['default'];
+        const shipping = (rates && rates[method] !== null) ? rates[method] : 0;
+        const purchaseValue = (basePrice * totalQty) + shipping;
         
         // Change button state
         const submitBtnSpan = orderForm.querySelector('.submit-btn span');
@@ -382,6 +389,17 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(async (response) => {
             const data = await response.json();
             if (data.success) {
+                // Trigger Meta Pixel Purchase Event
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'Purchase', {
+                        value: purchaseValue,
+                        currency: 'DZD',
+                        content_name: 'T-Shirt POLO USMA 2026',
+                        content_category: 'Apparel',
+                        num_items: totalQty
+                    });
+                }
+
                 // Reset form
                 orderForm.reset();
                 resetCommuneField();
